@@ -11,6 +11,8 @@ page_content = BeautifulSoup(page_response.content, "html.parser")
 
 new_article = page_content.find("a", {"class": "blog-new-article-parse"})
 
+new_article_image = page_content.find("img", {"class": "preview-image"})
+
 print(new_article)
 
 #twitter posting
@@ -24,6 +26,8 @@ accessTokenSecret = '5TLFlMWTENccbxd2EgiV0qCODK4CmWNbeRRb7m2SuRXhD'
 
 api = Twython(apiKey,apiSecret,accessToken,accessTokenSecret)
 
-api.update_status(status="Check out this new article" + tweetStr)
+photo = api.upload_media(media=new_article_image)
+
+api.update_status(status="Check out this new article!  " + tweetStr, media_ids=[photo['media_id']])
 
 print("Tweet sent!")
