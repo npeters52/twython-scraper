@@ -14,7 +14,7 @@ new_article = page_content.find("href", {"class": "blog-new-article-parse"})
 print(new_article)
 
 #twitter posting
-tweetStr = new_article
+tweetStr = str(new_article)
 
 # twitter consumer and access information
 apiKey = 'HT1H1WkUhl27GQR73ZMGqTZZ6'
