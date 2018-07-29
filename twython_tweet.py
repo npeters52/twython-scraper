@@ -9,12 +9,12 @@ page_link = 'https://thoughtcosmonaut.com/'
 page_response = requests.get(page_link, timeout=5)
 page_content = BeautifulSoup(page_response.content, "html.parser")
 
-new_article = page_content.findAll("href", {"class": "blog-new-article-parse"})
+new_article = page_content.findAll("a", {"class": "blog-new-article-parse"})
 
 print(new_article)
 
 #twitter posting
-tweetStr = "Check out this new article!"
+tweetStr = new_article
 
 # twitter consumer and access information
 apiKey = 'HT1H1WkUhl27GQR73ZMGqTZZ6'
@@ -24,8 +24,6 @@ accessTokenSecret = '5TLFlMWTENccbxd2EgiV0qCODK4CmWNbeRRb7m2SuRXhD'
 
 api = Twython(apiKey,apiSecret,accessToken,accessTokenSecret)
 
-response = api.upload_media(media=new_article)
-
-api.update_status(status=tweetStr, media_ids=[response['media_id']])
+api.update_status(status=tweetStr)
 
 print("Tweeted: " + tweetStr)
