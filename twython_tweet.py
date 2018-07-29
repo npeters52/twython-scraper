@@ -11,6 +11,8 @@ page_content = BeautifulSoup(page_response.content, "html.parser")
 
 new_article = page_content.findAll("href", {"class": "blog-new-article-parse"})
 
+response = twitter.upload_media(media=new_article)
+
 print(new_article)
 
 #twitter posting
@@ -24,6 +26,6 @@ accessTokenSecret = '5TLFlMWTENccbxd2EgiV0qCODK4CmWNbeRRb7m2SuRXhD'
 
 api = Twython(apiKey,apiSecret,accessToken,accessTokenSecret)
 
-api.update_status(status=tweetStr, response[new_article])
+api.update_status(status=tweetStr, media_ids=[response['media_id']])
 
 print("Tweeted: " + tweetStr)
