@@ -11,6 +11,8 @@ page_content = BeautifulSoup(page_response.content, "html.parser")
 
 new_article = page_content.findAll("a", {"class": "top-article-title"})
 
+print(new_article)
+
 #twitter posting
 tweetStr = new_article
 
