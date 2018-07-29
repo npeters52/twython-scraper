@@ -9,7 +9,7 @@ page_link = 'https://thoughtcosmonaut.com/'
 page_response = requests.get(page_link, timeout=5)
 page_content = BeautifulSoup(page_response.content, "html.parser")
 
-new_article = page_content.findAll("a", {"class": "top-article-title"})
+new_article = page_content.findAll("a", {"class": "blog-new-article-parse"})
 
 print(new_article)
 
