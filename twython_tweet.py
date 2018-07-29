@@ -24,6 +24,6 @@ accessTokenSecret = '5TLFlMWTENccbxd2EgiV0qCODK4CmWNbeRRb7m2SuRXhD'
 
 api = Twython(apiKey,apiSecret,accessToken,accessTokenSecret)
 
-api.update_status(status=tweetStr)
+api.update_status(status="Check out this new article" + tweetStr)
 
 print("Tweet sent!")
