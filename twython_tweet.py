@@ -26,4 +26,4 @@ api = Twython(apiKey,apiSecret,accessToken,accessTokenSecret)
 
 api.update_status(status=tweetStr)
 
-print("Tweeted: " + tweetStr)
+print("Tweeted sent!")
